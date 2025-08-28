@@ -10,9 +10,12 @@ python3 detector_afthab.py iscp_pii_dataset_-_Sheet1.csv
 
 ## PII Detector Deployment Plan
 
-I suggest running the PII detector as a **Sidecar container** alongside our main app. This way, it can check and redact sensitive info in real-time without changing the app
+# PII Detector Deployment Plan
 
-It’s simple and scales automatically with the app and keeps latency low. the incoming data passes through the Sidecar, gets cleaned, and then goess to storage or APIs
+I think its better to run the PII detector as a **Sidecar container** alongside our main app. In this way, it can watch the data and mask the sensitive info in realtime without touching the app itself, which is nice because we don’t have to mess with teh existing code 
 
-This is better than a network level or browser solution because it covers all data and is easy to update independently. Overall it’s safe, efficient, and verry easy to maintain
+It’s pretty simple to set up, scales automatically as the app grows, and latency stays low, which is good because nobody likes slow apps. Basically, all incoming data goes through the Sidecar, gets cleaned, and then continues on to storage or APIs. You can even log some stats if needed, just for monitoring and all 
+
+I thought about other options like running it at the network level or in the browser, but with these options, we'll have to deal with a lot of extra setup and it might not catch everything all the time. This approach is simple and safe and easy to manage 
+
 
