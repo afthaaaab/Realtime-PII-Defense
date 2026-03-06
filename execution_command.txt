@@ -1,1 +1,1 @@
-python detector_afthabkarim.py <filename>.csv
+python detector.py <filename>.csv
